@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tudo Sobre Engenharia Social</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+      background: url(background\ 5G.jpg) no-repeat center center fixed;
+      background-size: cover;
+      line-height: 1.6;
+      cursor: url(cursor\ sem\ cauda\ azul\ [cursor\ tailless\ blue].cur), auto;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(51, 51, 51, 0.9);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar-header {
+      padding: 0 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar-header img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+      padding: 20px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: white;
+      padding: 12px 15px;
+      text-decoration: none;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .sidebar-nav a:hover {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .sidebar-nav a.active {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .titulo-digitando {
+      font-size: 48px;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #00bfff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00bfff;
+      width: 0;
+      animation: digitar 3s steps(30) forwards, blink 0.7s;
+    }
+
+    @keyframes digitar {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .tech-circle {
+      border: 3px solid transparent;
+      border-top-color: #00bfff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.651);
+      border-bottom: 2px solid #00bfff;
+    }
+
+    header img {
+      width: 160px;
+      height: auto;
+    }
+
+    header h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        flex-direction: column; 
+        padding: 20px 40px;
+        background: rgba(0, 0, 0, 0.37);
+        border-bottom: 2px solid #00bfff;
+        width: 100%; 
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #00e0ff;
+    }
+
+    h2 {
+      margin-top: 40px;
+      border-bottom: 1px solid #00bfff;
+      padding-bottom: 10px;
+    }
+
+    p, ul {
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .panel {
+      transform-style: preserve-3d;
+      transform: perspective(500px) translateZ(0);
+      transition: transform 0.5s;
+    }
+    .panel:hover {
+      transform: perspective(500px) translateZ(20px);
+    }
+
+    .accordion {
+      background-color: #111;
+      color: #00bfff;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.2em;
+      transition: 0.4s;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+    .accordion {
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,191,255,0.2);
+    }
+    .accordion:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+    }
+    .active, .accordion:hover {
+      background-color: #333;
+    }
+
+    .speed-comparison {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .speed-bar {
+      height: 30px;
+      width: calc(var(--speed) * 1%);
+      transition: width 1s ease-out;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: #222;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .search-container {
+      margin: 30px 0;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #00bfff;
+      color: white;
+      border-radius: 4px;
+    }
+    .search-result {
+      padding: 8px;
+      border-bottom: 1px solid #00bfff33;
+      cursor: pointer;
+    }
+    .search-result:hover {
+      background: #00bfff22;
+    }
+
+    .risk-badge {
+      background-color: #800040;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #00bfff;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background-color: #003366;
+      color: #00e0ff;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #111;
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px 0;
+      }
+      
+      .sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+      }
+      
+      .sidebar-nav a {
+        padding: 8px 12px;
+        margin: 5px;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      .overlay {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="logovikings.png" alt="Logo Vikings">
+      <h3>Menu de Navegação</h3>
+    </div>
+    <div class="sidebar-nav">
+      <a href="index.html (página principal).html" class="active">Senhas Seguras</a>
+      <a href="pagina2.html (Tecnologia 5G).html">Tecnologia 5G</a>
+      <a href="pagina3.html (Engenharia Social).html">Engenharia Social</a>
+      <a href="pagina4.html (Firewalls, IDS e IPS).html">Firewalls, IDS e IPS</a>
+      <a href="sobre.html (Sobre o projeto).html">Sobre o Projeto</a>
+      <a href="https://www.unipar.br/" target="_blank">Site UNIPAR</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1 class="titulo-digitando">Engenharia Social</h1>
+    </header>
+    <div class="loader">
+      <div class="tech-circle"></div>
+    </div>
+    <div class="overlay">
+      <div class="container">
+        <h2>Engenharia Social</h2>
+        <p>A engenharia social é uma maneira de manipular as vítimas para conseguir informações pessoais com o fim de realizar um ataque que pode comprometer a segurança pessoal ou a segurança de uma rede corporativa.</p>
+
+        <h2>Como e por que a engenharia social funciona</h2>
+        <p>As táticas e técnicas de engenharia social são fundamentadas na ciência da motivação humana. Elas manipulam as emoções e os instintos das vítimas de maneiras que comprovadamente levam as pessoas a tomar atitudes que não são de seu interesse.<br><br>A maioria dos ataques de engenharia social emprega uma ou mais das seguintes táticas:</p>
+        <ul>
+          <li>Simular uma marca confiável.</li>
+          <li>Fazer-se passar por uma agência governamental ou figura de autoridade.</li>
+          <li>Induzir medo ou senso de urgência.</li>
+          <li>Apelar à ganância.</li>
+          <li>Apelar para a utilidade ou curiosidade.</li>
+        </ul>
+        
+     
+        <button class="accordion">Como funciona a engenharia social?</button>
+        <div class="panel">
+          <p>A maioria das técnicas de engenharia social não requer quaisquer competências técnicas por parte do agressor, o que significa que qualquer pessoa, desde pequenos ladrões até aos criminosos mais sofisticados, pode operar neste espaço.
+
+Há muitas técnicas que se enquadram no termo geral de engenharia social em cibersegurança. Entre as mais conhecidas encontram-se o spam e o phishing:<br><br>
+O Spam é qualquer forma de comunicação não solicitada enviada em massa. Na maioria das vezes, o spam é um e-mail enviado ao maior número de utilizadores possível, mas também pode ser entregue através de mensagens instantâneas, SMS e redes sociais. O spam não é engenharia social em si, mas algumas das suas campanhas utilizam técnicas de engenharia social como phishing, spearphishing, vishing, smishing ou propagação de anexos ou links maliciosos. <br><br>
+O Phishing é uma forma de ciberataque em que o criminoso se faz passar por uma entidade de confiança para pedir informações sensíveis à vítima. Estes tipos de fraude geralmente tentam criar um sentido de urgência, ou empregam táticas de medo para coagir a vítima a cumprir os pedidos do agressor. As campanhas de phishing podem visar um grande número de utilizadores anónimos, ou uma vítima específica ou vítimas específicas.</p>
+        </div>
+
+        <button class="accordion">5 formas de proteger a sua organização contra ataques de Engenharia Social</button>
+        <div class="panel">
+          <p><b>1. <b>Formação regular em cibersegurança de TODOS os funcionários, incluindo a gestão de topo e o pessoal de TI.</b> Lembre-se de que tal formação deve mostrar ou simular cenários da vida real. Os pontos de aprendizagem devem ser acionáveis e, acima de tudo, ativamente testados fora da sala de formação: as técnicas de engenharia social baseiam-se na baixa "ciberconsciência" dos seus alvos.</p>
+          <p><b>2. <b>Procurar passwords fracas</b> que possam potencialmente tornar-se numa porta aberta na rede da sua organização para atacantes. Além disso, proteger as palavras-passe com outra camada de segurança, implementando autenticação multifator.</p>
+          <p><b>3. <b>Implementar soluções técnicas para combater as comunicações fraudulentas</b>, para que as mensagens de spam e phishing sejam detetadas, colocadas em quarentena, neutralizadas e eliminadas. As soluções de segurança, incluindo muitas que a ESET fornece, têm algumas ou todas estas capacidades.</p>
+          <p><b>4. <b>Criar políticas de segurança compreensíveis</b> que os colaboradores possam utilizar e que os ajudem a identificar as medidas que precisam de tomar quando se deparam com engenharia social.</p>
+          <p><b>5. <b> Utilizar uma solução de segurança e ferramentas administrativas</b>, tais como ESET PROTECT Cloud, para proteger os endpoints e as redes da sua organização, dando aos administradores total visibilidade e a capacidade de detetar e mitigar potenciais ameaças na rede.</p>
+        </div>
+
+        <button class="accordion">Setores Impactados</button>
+        <div class="panel">
+          <ul>
+            <li><b>Financeiro:</b> Bancos e instituições financeiras são alvos frequentes de ataques de engenharia social, como phishing e fraude bancária, para obter credenciais de acesso e realizar transações fraudulentas.</li>
+            <li><b>Saúde:</b> Hospitais e empresas do setor de saúde armazenam informações sensíveis dos pacientes. Ataques de engenharia social podem ser usados para acessar registros médicos ou realizar ransomware contra sistemas hospitalares.</li>
+            <li><b>Empresas e Corporativo:</b> Funcionários são frequentes alvos de spear phishing, onde e-mails personalizados enganam trabalhadores para liberar acesso a sistemas internos, levando ao roubo de dados corporativos e espionagem industrial.</li>
+            <li><b>Governo e Defesa:</b> Setores governamentais lidam com informações altamente sigilosas. Ataques de engenharia social podem comprometer segurança nacional ao obter credenciais de agentes públicos ou informações estratégicas.</li>
+            <li><b>Tecnologia e Telecomunicações:</b> Empresas de tecnologia lidam com infraestrutura crítica de internet e software. Engenharia social pode ser usada para acessar redes corporativas ou comprometer dados de usuários.</li>
+          </ul>
+        </div>
+
+        <h2>Porque devem as PMEs preocupar-se com a engenharia social?</h2>
+        <p>As PMEs estão cada vez mais conscientes de que são alvos de cibercriminosos, de acordo com um inquérito de 2019 conduzido pela Zogby Analytics em nome da US National Cyber Security Alliance. Quase metade (44%) das empresas com 251-500 empregados disse ter sofrido uma quebra oficial de dados nos últimos 12 meses. O inquérito concluiu que 88% das pequenas empresas acreditam que são pelo menos um alvo "algo provável" para os cibercriminosos, incluindo quase metade (46%) que acreditam que são um alvo "muito provável".<br><br>Os danos são reais e extensos, um ponto bem ilustrado pelo relatório anual do Centro de Crimes pela Internet (IC3) do FBI. O FBI estima que, só em 2018, as empresas americanas perderam mais de 2,7 mil milhões de dólares em ciberataques, incluindo 1,2 mil milhões de dólares atribuídos ao comprometimento de Email profissional (BEC) ou da conta de Correio Eletrónico (EAC), o que que permitiu transferências não autorizadas de fundos.</p>
+
+        <button class="accordion">Phishing é a principal forma de ataque usando Engenharia Social</button>
+        <div class="panel">
+          <p><span class="risk-badge">RISCO</span> <b>Spear Phishing:</b> Tem como alvo um usuário específico ou usuários de uma mesma organização. O hacker pesquisará o alvo, geralmente usando informações encontradas no LinkedIn, Facebook ou outras mídias sociais, para criar uma mensagem que pareça vir de alguém que o alvo conhece e confia ou que se refira a situações com as quais o alvo está familiarizado. Ou seja, o golpe é personalizado.</p>
+          <p><span class="risk-badge">RISCO</span> <b>Whale Phishing  :</b> É um ataque de spear phishing que tem como alvo um indivíduo de alto perfil, como um CEO, gerente de alto nível ou figura política. Comprometimento de E-mail Comercial (BEC)O hacker usa e-mail corporativo para enviar mensagens de uma conta real de uma figura de autoridade, tornando o golpe muito mais difícil de detectar.</p>
+          <p><span class="risk-badge">RISCO</span> <b>Vishing:</b> É o phishing conduzido por meio de chamadas telefônicas. Indivíduos geralmente vivenciam vishing na forma de chamadas nas quais o golpista se passa por alguém de autoridade ou de uma empresa conhecida para ganhar informações privilegiadas.</p>
+          <p><span class="risk-badge">RISCO</span> <b>Smishing:</b> É o phishing por meio de uma mensagem de texto contendo links ou telefones maliciosos. Quando o usuário clica em um dos links ou liga para o número, o ataque continua e informações sigilosas serão requisitadas pelo atacante. Existem outras formas de engenharia social, tais como: baiting, pretexting, tailgating, entre outros. Se fosse listar todos os tipos, daria para escrever um livro.</p>
+        </div>
+
+        <h2>O calcanhar de Aquiles de qualquer sistema: os usuários</h2>
+       <p>O fator humano é o principal risco de qualquer sistema seguro.<br><br>
+Mesmo que você tenha todos os recursos para proteger seu data center, suas implantações na nuvem, a segurança física da sua empresa. Ainda que tenha investido em tecnologias defensivas, possua as políticas e processos de segurança corretos, avalie sua eficácia e melhore continuamente.
+<br><br>
+Apesar de tudo isso, um engenheiro social pode pôr todo seu investimento a perder com um simples e-mail.</p>
+
+        <h2>Omnichannel atrai atenção do phishing em mobiles</h2>
+        <p>Uma tendência notável para 2023 foi o aumento dramático do phishing em dispositivos móveis, por meio do WhatsApp e SMS, e esperamos que esta ameaça aumente ainda mais em 2024. Os atores da ameaça estão redirecionando estrategicamente as vítimas para interações móveis, explorando as vulnerabilidades inerentes às plataformas portáteis.<br><br>
+Abuso conversacional, incluindo smishing, teve um crescimento exponencial. As campanhas multitoque visam atrair os usuários dos desktops para os dispositivos móveis, utilizando táticas como QR codes e chamadas de voz fraudulentas. Isso não apenas torna os ataques de phishing mais eficazes em dispositivos móveis, mas também complica a detecção para as equipes de segurança corporativa.
+</p>
+
+        <h2>O Futuro da Engenharia Social</h2>
+        <p>As tendências de uso para a IA na engenharia social dos cibercriminosos deve ser a herança deixada para o próximo ano. Para especialistas da Proofpoint, cabe às equipes de Segurança proteger seus ativos corporativos contra os grandes desafios que a superfície de riscos proporciona.<br><br>
+A inteligência artificial generativa é uma faca de dois gumes, trazendo tanto oportunidades quanto desafios para a cibersegurança. O avanço de ferramentas como ChatGPT, FraudGPT e WormGPT gerou preocupações sobre seu uso indevido, levando o governo dos EUA a emitir uma ordem executiva em 2023.
+Embora os criminosos cibernéticos ainda explorem métodos tradicionais para lucrar, suas táticas podem mudar à medida que a detecção de ameaças evolui. Por outro lado, fornecedores de segurança estão integrando IA generativa em seus produtos para fortalecer defesas. Com isso, cresce a demanda por políticas responsáveis de IA, impulsionada por reguladores e clientes, o que levará à criação de novas diretrizes e possíveis desafios inesperados.
+</p>
+
+        <h2>Recursos Adicionais</h2>
+        <button class="accordion">Fontes e Referências</button>
+        <div class="panel">
+          <ul>
+            <li><b>IBM:</b> O que é engenharia social?</li>
+            <li><b>kaspersky:</b> Tipos de ataques de engenharia social</li>
+            <li><b>eset:</b> Porque devem as PMEs preocupar-se com a engenharia social?</li>
+            <li><b>UFRGS:</b> Engenharia social e IA ampliarão risco à identidade em 2024</li>
+            <li><b>securityleaders:</b> Ciberataques com engenharia social agressiva</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const titulo = document.querySelector('.titulo-digitando');
+      titulo.style.animation = 'digitar 3s steps(30) forwards, blink 0.7s infinite';
+      window.addEventListener('load', function() {
+        document.querySelector('.loader').style.display = 'none';
+      });
+      
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+        
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
