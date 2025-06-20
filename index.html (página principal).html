@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senhas Seguras e Autenticação Multifator</title>
+  <style>
+    body {
+      background: url("imagens/WhatsApp\ Image\ 2025-05-09\ at\ 21.11.19.jpeg") no-repeat center center fixed;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      color: #ffffff;
+      cursor: url("imagens/cursor sem cauda azul [cursor tailless blue].cur"), auto;
+      font-size: large;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(51, 51, 51, 0.9);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar-header {
+      padding: 0 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar-header img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+      padding: 20px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: white;
+      padding: 12px 15px;
+      text-decoration: none;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .sidebar-nav a:hover {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .sidebar-nav a.active {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    nav {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      border-radius: 5px;
+      margin: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      border-right: 1px solid #444;
+    }
+
+    nav a:last-child {
+      border-right: none;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(46, 41, 41, 0.288);
+    }
+
+    .titulo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .titulo h1 {
+      font-size: 24px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .titulo img {
+      width: 80px;
+      height: auto;
+    }
+
+    h2 {
+      color: #00bfff;
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .caixa {
+      margin: 10px 0;
+    }
+
+    .caixa img.imagen1 {
+      display: flex;
+      margin-top: 10px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 2px solid #ccc;
+    }
+
+    ul li {
+      margin-bottom: 20px;
+    }
+
+    ul ul {
+      margin-left: 20px;
+      list-style-type: disc;
+    }
+
+    img.imagen1 {
+      float: right;
+      margin: 0 0 20px 20px;
+      max-width: 350px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px 0;
+      }
+      
+      .sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+      }
+      
+      .sidebar-nav a {
+        padding: 8px 12px;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="imagens/logovikings.png" alt="Logo Vikings">
+      <h3>Menu de Navegação</h3>
+    </div>
+    <div class="sidebar-nav">
+      <a href="index.html (página principal).html" class="active">Senhas Seguras</a>
+      <a href="pagina2.html (Tecnologia 5G).html">Tecnologia 5G</a>
+      <a href="pagina3.html (Engenharia Social).html">Engenharia Social</a>
+      <a href="pagina4.html (Firewalls, IDS e IPS).html">Firewalls, IDS e IPS</a>
+      <a href="sobre.html (Sobre o projeto).html">Sobre o Projeto</a>
+      <a href="https://blog.asaas.com/autenticacao-multifator/">Fontes</a>
+      <a href="https://www.unipar.br/" target="_blank">Site UNIPAR</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <div class="container">
+      <div class="accordion">
+        <div class="titulo">
+          <img src="imagens/logovikings.png" alt="Logo Vikings">
+          <h1>SENHAS SEGURAS E AUTENTICAÇÃO MULTIFATOR: A IMPORTÂNCIA DE CRIAR SENHAS FORTES</h1>
+          <img src="imagens/logovikings.png" alt="Logo Vikings">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="accordion2">
+        <ul>
+          <li>
+            <h2>INTRODUÇÃO</h2>
+            <img class="imagen1" src="imagens/ciberseguranca-mao-notebook.jpg" alt="Cybersegurança" width="350px">
+            <div class="caixa">
+              <p>Em um mundo cada vez mais digital, onde as interações online e as transações financeiras estão no cotidiano das pessoas, proteger dados pessoais tornou-se uma prioridade. No entanto, a maior parte dos usuários ainda subestima a importância de medidas de segurança simples, como o uso de senhas fortes e autenticação multifatorial (MFA).</p>
+              <p>Senhas fracas e o uso de um único fator de autenticação tornam as contas digitais extremamente vulneráveis. Ataques como o phishing, força bruta e o roubo de dados através de vazamentos estão cada vez mais sofisticados, e qualquer falha nas camadas de segurança pode resultar em danos financeiros ou pessoais consideráveis.</p>
+              <p>Este conteúdo oferece um guia detalhado sobre como criar senhas fortes, a importância da MFA e como essas práticas podem proteger suas contas online.</p>
+            </div> 
+          </li>
+
+          <li>
+            <h2>O QUE É AUTENTICAÇÃO MULTIFATOR (MFA)?</h2>
+            <p>Embora criar senhas fortes seja essencial, elas podem ser roubadas por meio de ataques como phishing ou malware. A autenticação multifatorial (MFA) adiciona uma camada extra de segurança, tornando muito mais difícil para os hackers acessarem sua conta.</p>
+            <p>O MFA requer que o usuário forneça <strong>dois ou mais fatores de autenticação</strong>, geralmente de diferentes categorias:</p>
+            <ul>
+              <li><strong>Algo que você sabe</strong>: Uma senha ou PIN.</li>
+              <li><strong>Algo que você tem</strong>: Um código enviado por SMS, e-mail ou gerado por um aplicativo de autenticação, como o Google Authenticator.</li>
+              <li><strong>Algo que você é</strong>: Um fator biométrico, como uma impressão digital ou reconhecimento facial.</li>
+              <li><strong>Algo físico</strong>: Uma chave de segurança física, como o dispositivo YubiKey.</li>
+            </ul>
+            <p>A combinação desses fatores torna muito mais difícil para um atacante obter acesso a sua conta, mesmo que ele tenha roubado sua senha. Para contas sensíveis, como e-mail, banco e redes sociais, o MFA é essencial.</p>
+          </li>
+
+          <h2>Quais os métodos de autenticação multifatores?</h2>
+          <p>Existem três modelos principais para o funcionamento da autenticação multifator, que estão relacionadas com alguns elementos dados pelo usuário ao tentar acessar uma conta.</p>
+          <p>São eles: conhecimento, posse e inerência. Essas três características se combinam para oferecer mais segurança na operação.</p>
+
+          <h2>1. Modelo de conhecimento</h2>
+          <p>O modelo de conhecimento se baseia nas respostas para perguntas de segurança pessoal. São aquelas informações dispostas no momento da criação do nome de usuário e senha, que podem ser utilizadas como critério de acesso.</p>
+          <p>Também são considerados modelos de conhecimento as senhas e as OTPs (One Time Password), senhas geradas unicamente para a validação de um acesso online. Esse sistema muitas vezes necessita de aplicativos em um celular para acessar a conta.</p>
+
+          <h2>2. Modelo de posse</h2>
+          <p>No modelo de posse, também se encaixam as OTPs, geralmente, no formato de códigos gerados em aplicativos de smartphone. No geral, são considerados modelos de posse acessos que necessitam de algum tipo de método de autenticação externo.</p>
+          <p>Esse acesso pode ser relacionado a possuir algum crachá, dispositivo USB, certificado por software ou token, aparelhos geradores de senha independentes da conexão com internet.</p>
+
+          <h2>3. Modelo de inerência</h2>
+          <p>O modelo de inerência considera outros fatores externos como medidas de segurança. É possível dizer que nessa etapa são consideradas tecnologias para camadas mais profundas de segurança.</p>
+          <p>Nesse caso, se aplicam o uso de reconhecimento facial, autenticação de impressões digitais, retina, biometria visual, etc. Também podem ser considerados fatores como avaliação comportamental, dependendo da necessidade de acesso.</p>
+          <p>Vale ressaltar que o modelo mais comum de uso para o MFA é a modalidade de conhecimento, exigindo a integração de um código junto do login e senha.</p>
+
+          <h2>Onde utilizar a MFA?</h2>
+          <p>A autenticação multifator pode ser utilizada em diversos tipos de acessos e aplicações. Geralmente, ela é mais visada em acessos que o usuário tenha muitas informações sensíveis e pessoais, como o caso de bancos, instituições financeiras ou acessos governamentais.</p>
+          <p>Essa autenticação já era utilizada até mesmo em caixas eletrônicos, com a facial ou biometria. No entanto, com o aumento do uso da tecnologia e dos aplicativos de conta digital, a autenticação multifator passou a ser um ponto fundamental para a segurança de dados.</p>
+
+          <h2>Quais os benefícios do MFA?</h2>
+          <p>O principal foco da MFA é a segurança. Embora uma senha possa parecer bastante segura, os métodos para descobrir informações são muito variados. E, diariamente, são criadas novas formas dos invasores conseguirem acesso às informações pessoais.</p>
+          <p>Até mesmo grandes plataformas sofrem com quebras de segurança bastante perigosas, com bancos de dados completos vazando informações confidenciais. Nem mesmo bancos de dados do governo federal estão a salvo de hackers.</p>
+          <p>Por isso, ao implementar o método MFA no sistema de um site, a empresa está adicionando diversas camadas de segurança, evitando problemas. Esse procedimento não torna um ambiente digital inviolável, mas é uma das principais ferramentas para aumentar a segurança online e impedir o acesso não autorizado.</p>
+          <p>De maneira geral, os benefícios que podem ser percebidos com a utilização do MFA são:</p>
+
+          <h2>Qual a diferença entre MFA e autenticação de dois fatores?</h2>
+          <li>
+              <p>Apesar de ambos serem métodos de verificação de segurança, há diferenças substanciais entre eles. A principal está no número de etapas de verificação que o sistema exige. </p>
+              <p>No 2FA (autenticação de 2 fatores), são apenas 2 formas diferentes de autenticar um acesso, como a senha e um dispositivo móvel — SMS, chamada telefônica, biometria, etc. Já na MFA, são diversas etapas de verificação obrigatórias para o acesso. </p>
+              <p>Ou seja, uma senha, um código SMS, uma confirmação na tela, biometria, etc. Todas as etapas serão escolhidas pelo usuário em cada uma das plataformas a serem acessadas. Pode-se dizer, portanto, que a 2FA é uma forma de MFA, com menos reforços de segurança. </p>
+              
+              <img class="image" src="imagens/diferencas-2FA-e-MFA-.webp" alt="MFA" width="100%">
+          </li>
+
+          <li>
+            <h2>A IMPORTÂNCIA DE CRIAR SENHAS FORTES</h2>
+            <img class="imagen1" src="imagens/5-dicas-senhas-seguras.png" alt="5-dicas-senhas-seguras" width="350px">
+            <p>A primeira camada de proteção de qualquer conta online é a senha. Porém, muitos usuários ainda utilizam combinações simples e previsíveis, como <code>123456</code>, <code>senha</code>, ou até mesmo datas de nascimento. Essas senhas são facilmente descobertas por <strong>ataques de força bruta</strong> ou por softwares automatizados que tentam todas as combinações possíveis.</p>
+            <p>Um ataque de força bruta tenta acessar uma conta testando todas as combinações de senhas possíveis até encontrar a correta. Senhas simples e curtas tornam esse tipo de ataque muito mais rápido e eficaz.</p>
+            <p>Além disso, reutilizar senhas em vários sites e plataformas cria uma vulnerabilidade em cascata. Se uma senha for comprometida em um site, todas as contas que usam essa mesma senha podem ser acessadas por criminosos. Em um cenário onde vazamentos de dados são comuns, é crucial manter senhas únicas para cada plataforma.</p>
+          </li>
+
+          <li>
+            <h2>COMO CRIAR SENHAS SEGURAS</h2>
+            <img class="imagen1" src="imagens/MAOSENHATECLADO.jpg" alt="MAOSENHATECLADO" width="350px">
+            <p>Criar uma senha segura é simples, mas exige atenção a certos detalhes. Abaixo estão algumas diretrizes essenciais para criar senhas que sejam difíceis de quebrar:</p>
+            <ul>
+              <li><strong>Comprimento</strong>: Utilize pelo menos 12 a 16 caracteres. Quanto maior a senha, mais difícil ela se torna de ser quebrada por um ataque de força bruta.</li>
+              <li><strong>Complexidade</strong>: Misture letras maiúsculas, minúsculas, números e símbolos especiais. Isso aumenta a variedade de caracteres possíveis e dificulta a quebra.</li>
+              <li><strong>Evite padrões previsíveis</strong>: Não use sequências óbvias como <code>abcd1234</code> ou <code>qwerty</code>, que são comumente tentadas em ataques.</li>
+              <li><strong>Use palavras aleatórias</strong>: Utilize combinações aleatórias de palavras e símbolos. Por exemplo: <code>Vc8gk@R9!Pl4gN</code></li>
+              <li><strong>Evite dados pessoais</strong>: Não use informações facilmente acessíveis sobre você, como seu nome, aniversário ou nome de animais de estimação.</li>
+            </ul>
+            <p><strong>Dica</strong>: Use um gerenciador de senhas (como o <a href="https://bitwarden.com">Bitwarden</a> ou <a href="https://1password.com">1Password</a>) para armazenar e gerar senhas fortes, garantindo que você nunca precise reutilizar senhas.</p>
+          </li>
+
+          <p>O MFA permite mais confiabilidade ao sistema do Asaas, além de minimizar as chances de acessos indevidos para as contas online dos clientes, que confiam seus dados dentro da nossa plataforma.</p>
+          <p>Sendo uma solução completa para suas necessidades, a segurança é um pilar fundamental para nosso negócio e a segurança dos seus dados é nossa prioridade!</p>
+          <img class="image" src="imagens/tipos-autenticação-.webp" alt="ONDEUTILIZAR" width="100%">
+          <ul>
+            <li><strong>Redução de riscos</strong>: ao utilizar várias camadas de proteção a uma conta digital, por exemplo, há menos chances de um invasor acessar as credenciais. Além, também, de minimizar problemas com erros humanos, senhas fáceis ou dispositivos roubados, por exemplo.</li>
+            <li><strong>Melhor resposta de segurança</strong>: diversas empresas podem utilizar um sistema de autenticação multifatores para detectar tentativas suspeitas de login. Assim, há uma resposta mais rápida a possíveis ataques cibernéticos.</li>
+            <li><strong>Simplicidade de uso</strong>: diversos programas e softwares hoje já integram a diversos fatores de verificação de acesso — sejam redes sociais, aplicativos de bancos ou internet banking empresarial, por exemplo. E é simples de começar a utilizar.</li>
+          </ul>
+
+          <p>É fundamental utilizar todas as ferramentas disponíveis para prevenir fraudes e golpes financeiros, e o MFA com certeza desempenha um papel essencial na proteção das informações de um usuário.</p>
+
+          <hr>
+
+          <h2>Benefícios do MFA</h2>
+          <ul>
+            <li><strong>Redução de Riscos:</strong> A implementação do MFA reduz significativamente os riscos de invasões. Mesmo que um invasor consiga obter sua senha através de phishing, vazamento de dados ou ataque de força bruta, ele ainda precisará do segundo fator de autenticação. Com isso, os riscos de acesso não autorizado diminuem drasticamente.</li>
+            <li><strong>Melhoria na Resposta de Segurança:</strong> Muitas plataformas que utilizam MFA são capazes de detectar tentativas de login suspeitas. Se houver uma tentativa de login de uma localização incomum ou de um dispositivo desconhecido, o sistema pode enviar alertas ao usuário ou até mesmo bloquear o acesso até que a identidade seja verificada. Isso permite uma resposta mais rápida a ataques cibernéticos.</li>
+            <li><strong>Facilidade de Implementação e Uso:</strong> Embora o MFA adicione uma camada de segurança, ele também é bastante simples de implementar para a maioria dos usuários. A maioria dos aplicativos e serviços online já oferece suporte ao MFA, e os usuários podem configurar suas contas para exigir uma autenticação adicional sem dificuldades. Programas como o <strong>Google Authenticator</strong> ou <strong>Authy</strong> tornam o processo ainda mais fácil e acessível.</li>
+            <li><strong>Prevenção de Golpes Financeiros e Fraudes:</strong> O uso do MFA é crucial na prevenção de <strong>fraudes financeiras</strong>. Em plataformas bancárias e de pagamento online, a autenticação multifatorial impede que criminosos acessem contas de maneira fraudulenta, mesmo que consigam obter a senha do usuário.</li>
+          </ul>
+
+          <p>Com a crescente sofisticação dos ataques cibernéticos, é fundamental utilizar o MFA como uma camada de segurança adicional para proteger informações sensíveis e garantir a segurança online.</p>
+          
+          <h2>TIPOS DE ATAQUES CIBERNÉTICOS E COMO EVITÁ-LOS</h2>
+          <p>Apesar de medidas como senhas fortes e MFA, é importante compreender os diferentes tipos de ataques cibernéticos que podem ser usados para roubar informações. Aqui estão alguns dos mais comuns:</p>
+          <ul>
+            <li><strong>Phishing</strong>: Um ataque onde um criminoso se faz passar por uma entidade confiável, como um banco ou uma rede social, para roubar informações pessoais. Sempre verifique o endereço de e-mail e evite clicar em links suspeitos.</li>
+            <li><strong>Malware</strong>: Programas maliciosos que infectam seu dispositivo para roubar dados ou controlar o acesso às suas contas. Use sempre um software antivírus confiável e não baixe arquivos ou links de fontes desconhecidas.</li>
+            <li><strong>Ataques de Força Bruta</strong>: Tentativas automatizadas de adivinhar sua senha. Usar senhas longas e complexas dificulta esse tipo de ataque. Além disso, considere implementar bloqueios temporários após várias tentativas falhadas de login.</li>
+          </ul>
+          <p>Esses são apenas alguns exemplos. Manter-se informado sobre as ameaças mais recentes e seguir as boas práticas de segurança online ajudará a proteger seus dados e informações pessoais contra esses ataques.</p>
+        </li>
+
+        </ul>
+      </div>
+   
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ativar link correspondente à página atual
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage || 
+            (currentPage === '' && linkPage === 'index.html')) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Remover qualquer evento de clique que possa estar interferindo
+      navLinks.forEach(link => {
+        link.onclick = null;
+      });
+    });
+  </script>
+</body>
+</html>
