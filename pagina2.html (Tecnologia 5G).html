@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tudo Sobre a Tecnologia 5G</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f0f0f0;
+      background: url(background\ 5G.jpg) no-repeat center center fixed;
+      background-size: cover;
+      line-height: 1.6;
+      cursor: url(cursor\ sem\ cauda\ azul\ [cursor\ tailless\ blue].cur), auto;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(51, 51, 51, 0.9);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar-header {
+      padding: 0 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar-header img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+      padding: 20px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: white;
+      padding: 12px 15px;
+      text-decoration: none;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .sidebar-nav a:hover {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .sidebar-nav a.active {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .titulo-digitando {
+      font-size: 48px;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #00bfff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00bfff;
+      width: 0;
+      animation: digitar 3s steps(30) forwards, blink 0.7s;
+    }
+
+    @keyframes digitar {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .tech-circle {
+      border: 3px solid transparent;
+      border-top-color: #00bfff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.651);
+      border-bottom: 2px solid #00bfff;
+    }
+
+    header img {
+      width: 160px;
+      height: auto;
+    }
+
+    header h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        flex-direction: column; 
+        padding: 20px 40px;
+        background: rgba(0, 0, 0, 0.37);
+        border-bottom: 2px solid #00bfff;
+        width: 100%; 
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #00e0ff;
+    }
+
+    h2 {
+      margin-top: 40px;
+      border-bottom: 1px solid #00bfff;
+      padding-bottom: 10px;
+    }
+
+    p, ul {
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .panel {
+      transform-style: preserve-3d;
+      transform: perspective(500px) translateZ(0);
+      transition: transform 0.5s;
+    }
+    .panel:hover {
+      transform: perspective(500px) translateZ(20px);
+    }
+
+    .accordion {
+      background-color: #111;
+      color: #00bfff;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.2em;
+      transition: 0.4s;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+    .accordion {
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,191,255,0.2);
+    }
+    .accordion:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+    }
+    .active, .accordion:hover {
+      background-color: #333;
+    }
+
+    .speed-comparison {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .speed-bar {
+      height: 30px;
+      width: calc(var(--speed) * 1%);
+      transition: width 1s ease-out;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: #222;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .security-badge {
+      background-color: #004080;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .search-container {
+      margin: 30px 0;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #00bfff;
+      color: white;
+      border-radius: 4px;
+    }
+    .search-result {
+      padding: 8px;
+      border-bottom: 1px solid #00bfff33;
+      cursor: pointer;
+    }
+    .search-result:hover {
+      background: #00bfff22;
+    }
+
+    .risk-badge {
+      background-color: #800040;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #00bfff;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background-color: #003366;
+      color: #00e0ff;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #111;
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px 0;
+      }
+      
+      .sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+      }
+      
+      .sidebar-nav a {
+        padding: 8px 12px;
+        margin: 5px;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      .overlay {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="logovikings.png" alt="Logo Vikings">
+      <h3>Menu de Navegação</h3>
+    </div>
+    <div class="sidebar-nav">
+      <a href="index.html (página principal).html" class="active">Senhas Seguras</a>
+      <a href="pagina2.html (Tecnologia 5G).html">Tecnologia 5G</a>
+      <a href="pagina3.html (Engenharia Social).html">Engenharia Social</a>
+      <a href="pagina4.html (Firewalls, IDS e IPS).html">Firewalls, IDS e IPS</a>
+      <a href="sobre.html (Sobre o projeto).html">Sobre o Projeto</a>
+      <a href="https://www.unipar.br/" target="_blank">Site UNIPAR</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <img src="Design_sem_nome__1_-removebg-preview.png" alt="5G Logo">
+      <h1 class="titulo-digitando">Tudo Sobre a Tecnologia 5G</h1>
+      <img src="Design_sem_nome__1_-removebg-preview.png" alt="5G Logo">
+    </header>
+    <div class="loader">
+      <div class="tech-circle"></div>
+    </div>
+    <div class="overlay">
+      <div class="container">
+        <h2>O Que é o 5G?</h2>
+        <p>A tecnologia 5G é a quinta geração de redes móveis, sucedendo o 4G LTE. Ela oferece maior velocidade, menor latência e capacidade de conectar mais dispositivos simultaneamente. O 5G impulsiona avanços em diversas áreas como saúde, transporte, agricultura, educação e entretenimento. Graças à sua infraestrutura avançada, ele viabiliza aplicações em tempo real e torna possível a consolidação da Internet das Coisas (IoT).</p>
+
+        <h2>Como Funciona o 5G?</h2>
+        <p>O 5G utiliza três faixas de frequência:</p>
+        <ul>
+          <li><strong>Baixa Frequência (Sub-1GHz):</strong> Ideal para áreas rurais e interiores de edifícios.</li>
+          <li><strong>Média Frequência (1GHz - 6GHz):</strong> Oferece bom equilíbrio entre cobertura e velocidade.</li>
+          <li><strong>Alta Frequência (mmWave - Acima de 24GHz):</strong> Altíssima velocidade para áreas urbanas densas.</li>
+        </ul>
+        <p>Além disso, ele adota tecnologias como beamforming, MIMO massivo, redes definidas por software (SDN) e virtualização (NFV), garantindo maior eficiência e confiabilidade.</p>
+     
+        <button class="accordion">Benefícios do 5G</button>
+        <div class="panel">
+          <p><strong>1. Velocidade Ultra-Rápida:</strong> Velocidades até 100 vezes maiores que o 4G, alcançando até 10 Gbps. Ideal para streaming em 8K, jogos em nuvem e aplicações industriais em tempo real.</p>
+          <p><strong>2. Latência Ultrabaxa:</strong> Latência próxima de 1 milissegundo, fundamental para cirurgias remotas, veículos autônomos e controle de robôs industriais.</p>
+          <p><strong>3. Conectividade Massiva:</strong> Capacidade de conectar milhões de dispositivos por km². Essencial para IoT, casas inteligentes, sensores industriais e cidades conectadas.</p>
+          <p><strong>4. Eficiência Energética:</strong> Menor consumo de energia por bit transmitido, permitindo uso sustentável em larga escala e maior duração de baterias em dispositivos IoT.</p>
+          <p><strong>5. Inovação e Transformação Digital:</strong> Impulsiona tecnologias como realidade aumentada, metaverso, robótica e inteligência artificial em tempo real.</p>
+        </div>
+
+        <button class="accordion">Desafios e Desvantagens</button>
+        <div class="panel">
+          <p><strong>1. Infraestrutura e Custos:</strong> Requer instalação de muitas antenas de pequeno alcance, o que demanda altos investimentos e planejamento urbano cuidadoso.</p>
+          <p><strong>2. Desigualdade no Acesso:</strong> Regiões menos favorecidas podem demorar mais para receber a nova tecnologia, acentuando desigualdades digitais.</p>
+          <p><strong>3. Segurança e Privacidade:</strong> Mais dispositivos conectados significam mais riscos. O 5G exige padrões elevados de segurança e proteção de dados.</p>
+          <p><strong>4. Compatibilidade de Dispositivos:</strong> A substituição de aparelhos incompatíveis com 5G pode gerar custos para consumidores e empresas.</p>
+          <p><strong>5. Impactos Ambientais:</strong> O aumento na produção de dispositivos pode intensificar o descarte eletrônico e a exploração de materiais raros.</p>
+        </div>
+
+        <button class="accordion">Setores Impactados</button>
+        <div class="panel">
+          <ul>
+            <li><strong>Saúde:</strong> Telemedicina, monitoramento remoto e cirurgias robóticas.</li>
+            <li><strong>Indústria:</strong> Automação, IA, fábricas inteligentes.</li>
+            <li><strong>Transporte:</strong> Veículos autônomos e logística em tempo real.</li>
+            <li><strong>Educação:</strong> Aulas com realidade aumentada e ensino imersivo.</li>
+            <li><strong>Agronegócio:</strong> Sensores para plantio, automação da colheita e otimização de recursos.</li>
+          </ul>
+        </div>
+
+        <h2>5G e Cibersegurança: Riscos e Proteções</h2>
+        <p>A tecnologia 5G traz avanços significativos em segurança, mas também introduz novos desafios para a proteção digital:</p>
+        <div class="speed-comparison">
+          <div class="speed-bar" style="--speed: 20%; background: #4CAF50;">4G LTE</div>
+          <div class="speed-bar" style="--speed: 100%; background: #00bfff;">5G</div>
+        </div>
+        <button class="accordion">Mecanismos de Segurança do 5G</button>
+        <div class="panel">
+          <p><span class="security-badge">SEGURANÇA</span> <strong>SUCI (Subscription Concealed Identifier):</strong> Substitui o IMSI, prevenindo rastreamento de assinantes.</p>
+          <p><span class="security-badge">SEGURANÇA</span> <strong>SEPP (Security Edge Protection Proxy):</strong> Gateway seguro para interconexão entre operadoras.</p>
+          <p><span class="security-badge">SEGURANÇA</span> <strong>Criptografia 256-bit:</strong> Proteção avançada de dados em trânsito e repouso.</p>
+          <p><span class="security-badge">SEGURANÇA</span> <strong>Network Slicing Seguro:</strong> Isolamento de redes virtuais para diferentes aplicações.</p>
+          <p><span class="security-badge">SEGURANÇA</span> <strong>Autenticação Baseada em Serviços (SBA):</strong> Cada serviço na rede 5G autentica-se separadamente.</p>
+        </div>
+
+        <button class="accordion">Principais Ameaças à Segurança 5G</button>
+        <div class="panel">
+          <p><span class="risk-badge">RISCO</span> <strong>Ataques à Cadeia de Suprimentos:</strong> Vulnerabilidades em equipamentos de fornecedores podem comprometer toda a rede.</p>
+          <p><span class="risk-badge">RISCO</span> <strong>Exploração de Network Slicing:</strong> Ataques entre fatias de rede ou vazamento de dados entre segmentos.</p>
+          <p><span class="risk-badge">RISCO</span> <strong>Virtualização Comprometida:</strong> Escape de containers ou VMs em ambientes NFV/SDN.</p>
+          <p><span class="risk-badge">RISCO</span> <strong>IoT Vulnerável:</strong> Dispositivos com segurança fraca podem ser usados para ataques DDoS massivos.</p>
+          <p><span class="risk-badge">RISCO</span> <strong>Ataques a Edge Computing:</strong> Servidores distribuídos podem ser alvos físicos e virtuais.</p>
+        </div>
+
+        <h3>Comparativo de Segurança: 4G vs 5G</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Característica</th>
+            <th>4G LTE</th>
+            <th>5G</th>
+          </tr>
+          <tr>
+            <td>Criptografia</td>
+            <td>128-bit AES</td>
+            <td>256-bit AES + ECIES</td>
+          </tr>
+          <tr>
+            <td>Autenticação</td>
+            <td>Baseada em SIM físico</td>
+            <td>eSIM + autenticação por serviço</td>
+          </tr>
+          <tr>
+            <td>Proteção de Identidade</td>
+            <td>IMSI (potencialmente rastreável)</td>
+            <td>SUCI (identificador oculto)</td>
+          </tr>
+          <tr>
+            <td>Arquitetura</td>
+            <td>Centralizada</td>
+            <td>Distribuída (edge computing)</td>
+          </tr>
+          <tr>
+            <td>Superfície de Ataque</td>
+            <td>Limitada</td>
+            <td>Expandida (mais dispositivos IoT)</td>
+          </tr>
+        </table>
+
+        <h2>Expansão do 5G no Brasil</h2>
+        <p>Desde o início da implantação do 5G em julho de 2022, o Brasil tem avançado significativamente na expansão da tecnologia. Até fevereiro de 2025, o sinal 5G já estava presente em mais de 800 municípios, abrangendo todas as regiões do país. Estados como São Paulo, Minas Gerais e Paraná lideram em número de cidades atendidas.</p>
+        <p>A Anatel estabeleceu metas progressivas para a cobertura do 5G, incluindo a instalação de antenas em municípios com diferentes faixas populacionais até 2029.</p>
+
+        <h2>5G Standalone (SA)</h2>
+        <p>O 5G Standalone (SA) representa uma evolução significativa em relação ao 5G Non-Standalone (NSA), pois opera de forma independente das redes 4G. Essa arquitetura permite menor latência, maior eficiência e suporte a aplicações avançadas como slicing de rede. Brasília foi a primeira capital brasileira a receber o 5G SA em julho de 2022, com operadoras como Claro, TIM e Vivo liderando a implementação.</p>
+
+        <h2>Estratégias de Proteção para Redes 5G</h2>
+        <button class="accordion">Melhores Práticas de Segurança</button>
+        <div class="panel">
+          <p><strong>1. Arquitetura Zero Trust:</strong> Verificação contínua de todos os dispositivos e usuários.</p>
+          <p><strong>2. Monitoramento com IA:</strong> Detecção de anomalias em tempo real usando machine learning.</p>
+          <p><strong>3. Segurança por Design:</strong> Incorporação de proteções desde a fase de projeto da rede.</p>
+          <p><strong>4. Atualizações Obrigatórias:</strong> Patch management rigoroso para todos os componentes.</p>
+          <p><strong>5. Testes de Invasão Regulares:</strong> Pentests em redes 5G para identificar vulnerabilidades.</p>
+        </div>
+
+        <h2>Perspectivas Futuras: 5G Advanced (5.5G)</h2>
+        <p>O 5G Advanced, também conhecido como 5.5G, é a próxima evolução da tecnologia 5G. Ele promete velocidades de download de até 10 Gbps, latência ainda menor e maior capacidade de conectar dispositivos simultaneamente. Além disso, o 5.5G integra recursos de inteligência artificial para otimização de redes e eficiência energética. No Brasil, operadoras já estão realizando testes com a tecnologia, preparando-se para sua futura implementação.</p>
+
+        <h2>O Futuro do 5G</h2>
+        <p>O 5G é mais do que uma evolução, é uma revolução tecnológica. Com ele, surgem novas possibilidades de inovação, inclusão digital e desenvolvimento sustentável. A longo prazo, ele pavimenta o caminho para o 6G, que promete ainda mais integração entre mundo físico e digital. Para que seu potencial seja plenamente explorado, será necessária a cooperação entre governos, empresas e sociedade.</p>
+
+        <h2>Recursos Adicionais</h2>
+        <button class="accordion">Fontes e Referências</button>
+        <div class="panel">
+          <ul>
+            <li><strong>3GPP TS 33.501:</strong> Padrão de segurança para arquitetura 5G</li>
+            <li><strong>NIST SP 1800-35:</strong> Guia de implementação segura de 5G</li>
+            <li><strong>ENISA:</strong> Relatório "Threat Landscape for 5G Networks"</li>
+            <li><strong>GSMA:</strong> Diretrizes de segurança para redes 5G</li>
+            <li><strong>ANATEL:</strong> Regulamentação brasileira para 5G</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const titulo = document.querySelector('.titulo-digitando');
+      titulo.style.animation = 'digitar 3s steps(30) forwards, blink 0.7s infinite';
+      window.addEventListener('load', function() {
+        document.querySelector('.loader').style.display = 'none';
+      });
+      
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+        
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
