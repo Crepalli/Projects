@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Aroma - Cafeteria</title>
+  <style>
+    :root {
+      --bg: #f8f3ec;
+      --surface: #fffaf4;
+      --primary: #6f4e37;
+      --accent: #c08a59;
+      --text: #2f241d;
+      --muted: #6f6258;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #fdf7ef 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: radial-gradient(circle at center, #7e5a41, var(--primary));
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem 4rem;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: #4f3726;
+      padding: 0.9rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f7ede2;
+      font-weight: 600;
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      transition: background 0.25s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    main {
+      width: min(1080px, 92%);
+      margin: 2.2rem auto 3.5rem;
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid #ecd9c4;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(111, 78, 55, 0.08);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .item {
+      background: #fff;
+      border: 1px solid #efdfce;
+      border-radius: 12px;
+      padding: 0.9rem;
+    }
+
+    .item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      color: #4f3726;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hours li,
+    .contacts li {
+      margin-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta {
+      text-align: center;
+      background: #f0dfcd;
+      border-color: #e1c7ab;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .cta a:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2rem 0 1.8rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>☕ Café Aroma</h1>
+    <p>
+      Um cantinho aconchegante para começar o dia com energia,
+      saborear cafés especiais e aproveitar delícias artesanais.
+    </p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#horarios">Horários</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="sobre">
+      <h2>Sobre a Cafeteria</h2>
+      <p>
+        No Café Aroma, cada xícara é preparada com grãos selecionados e muito carinho.
+        Nosso ambiente foi pensado para encontros, trabalho remoto e momentos tranquilos
+        com um bom café na mão.
+      </p>
+    </section>
+
+    <section id="cardapio">
+      <h2>Cardápio</h2>
+      <div class="menu-grid">
+        <article class="item">
+          <h3>Espresso Tradicional</h3>
+          <p>Café intenso com crema aveludada.</p>
+          <p class="price">R$ 7,00</p>
+        </article>
+        <article class="item">
+          <h3>Cappuccino Cremoso</h3>
+          <p>Espresso, leite vaporizado e canela.</p>
+          <p class="price">R$ 12,00</p>
+        </article>
+        <article class="item">
+          <h3>Mocha de Chocolate</h3>
+          <p>Café com chocolate e chantilly.</p>
+          <p class="price">R$ 14,00</p>
+        </article>
+        <article class="item">
+          <h3>Pão de Queijo Artesanal</h3>
+          <p>Quentinho, crocante por fora e macio por dentro.</p>
+          <p class="price">R$ 9,00</p>
+        </article>
+        <article class="item">
+          <h3>Cheesecake de Frutas Vermelhas</h3>
+          <p>Fatia cremosa com calda caseira.</p>
+          <p class="price">R$ 16,00</p>
+        </article>
+        <article class="item">
+          <h3>Sanduíche Natural</h3>
+          <p>Pão integral, frango desfiado e salada fresca.</p>
+          <p class="price">R$ 18,00</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="horarios">
+      <h2>Horários de Funcionamento</h2>
+      <ul class="hours">
+        <li>Segunda a Sexta: 07h às 20h</li>
+        <li>Sábado: 08h às 18h</li>
+        <li>Domingo: 09h às 14h</li>
+      </ul>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <ul class="contacts">
+        <li>📍 Rua das Flores, 123 - Centro</li>
+        <li>📞 (11) 99999-9999</li>
+        <li>✉️ contato@cafearoma.com.br</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>Peça seu café favorito</h2>
+      <p>Faça seu pedido pelo WhatsApp e retire na loja em poucos minutos.</p>
+      <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">Fazer pedido</a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Café Aroma - Feito com carinho para amantes de café.
+  </footer>
+</body>
+</html>
